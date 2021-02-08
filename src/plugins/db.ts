@@ -1,21 +1,21 @@
 import 'reflect-metadata';
 import fp from 'fastify-plugin';
 import { createConnection, getConnectionOptions } from 'typeorm';
-import { Product } from '../modules/products/entity';
+import { Address } from '../modules/address/entity';
 
 export default fp(async server => {
 	try {
 		const connectionOptions = await getConnectionOptions();
 		Object.assign(connectionOptions, {
 			options: { encrypt: true },
-			entities: [Product]
+			entities: [Address]
 		});
 
 		const connection = await createConnection(connectionOptions);
 		console.log('database connected');
 
 		server.decorate('db', {
-			products: connection.getRepository(Product)
+			address: connection.getRepository(Address)
 		});
 	} catch (error) {
 		console.log(error);

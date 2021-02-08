@@ -2,7 +2,7 @@ import fastify from 'fastify';
 
 import db from './plugins/db';
 import healthHandler from './modules/health/routes';
-import productsHandler from './modules/products/routes';
+import addressHandler from './modules/address/routes';
 
 function createServer() {
 	const server = fastify();
@@ -31,8 +31,9 @@ function createServer() {
 	});
 
 	server.register(db);
-	server.register(healthHandler, { prefix: '/address' });
-	server.register(productsHandler, { prefix: '/product' });
+	server.register(addressHandler, { prefix: '/address' });
+	server.register(healthHandler, { prefix: '/health' });
+
 
 	server.setErrorHandler((error, req, res) => {
 		req.log.error(error.toString());
