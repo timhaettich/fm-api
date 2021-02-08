@@ -1,0 +1,9 @@
+{
+    "type": "mysql",
+    "url": "grain-films.com",
+    "useNewUrlParser": true,
+    "synchronize": true,
+    "logging": true,
+    "entities": ["src/entity/*.*"],
+    "useUnifiedTopology": true
+}
