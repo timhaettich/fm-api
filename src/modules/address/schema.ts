@@ -33,15 +33,13 @@ export const getOneAddressSchema = {
 		type: 'object',
 		required: ['__id'],
 		properties: {
-			_id: { type: 'number' }
+			__id: { type: 'number' }
 		}
 	},
 	response: {
 		200: {
-			type: 'array',
-			items: {
-				properties: addressSchema
-			}
+			type: 'object',
+			properties: addressSchema,
 		}
 	}
 };
@@ -53,7 +51,7 @@ export const deleteAddressSchema = {
 		type: 'object',
 		required: ['__id'],
 		properties: {
-			_id: { type: 'number' }
+			__id: { type: 'number' }
 		}
 	},
 	response: {

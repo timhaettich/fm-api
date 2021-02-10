@@ -4,10 +4,13 @@ import {
 	Column,
 	CreateDateColumn,
 	UpdateDateColumn,
-  DeleteDateColumn
+  DeleteDateColumn,
+  OneToMany,
 } from 'typeorm';
 
-@Entity()
+import {AdrContactGrp} from "./AdrContactGrp/entity";
+
+@Entity("Address")
 export class Address {
   @PrimaryGeneratedColumn()
   __id: string
@@ -48,8 +51,7 @@ export class Address {
   @Column()
   AdrNotesClb: string
 
-  @Column()
-  category: string
-
+  @OneToMany(() => AdrContactGrp, (contact) => contact.Address)
+  public AdrContactGrp: AdrContactGrp[];
 
 }

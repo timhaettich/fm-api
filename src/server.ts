@@ -1,7 +1,7 @@
 import fastify from 'fastify';
 
 import db from './plugins/db';
-import healthHandler from './modules/health/routes';
+import adrContactGrpHandler from './modules/address/AdrContactGrp/routes';
 import addressHandler from './modules/address/routes';
 
 function createServer() {
@@ -32,7 +32,7 @@ function createServer() {
 
 	server.register(db);
 	server.register(addressHandler, { prefix: '/address' });
-	server.register(healthHandler, { prefix: '/health' });
+	server.register(adrContactGrpHandler, { prefix: '/contact' });
 
 
 	server.setErrorHandler((error, req, res) => {
